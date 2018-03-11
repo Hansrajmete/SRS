@@ -20,5 +20,10 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^$', views.index, name = 'index'),
+    url(r'^signup$', views.index, name = 'index'),
+    url(r'^$', views.index, name='index'),
+    url(r'^JobOpening$', views.myview_job, name='index'),
+    url(r'^Status$', views.myview_status, name='index'),
+    url(r'^index$', views.myview_index, name='index'),
+    #url(r'^.*$', views.index, name = 'index'),
 ]

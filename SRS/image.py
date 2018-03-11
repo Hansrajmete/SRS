@@ -41,6 +41,19 @@ dicto = {}
 
 
 # [a,p,o,cnt]
+def sign_up(username,password,mobile):
+    import sqlite3
+    import pandas as pd
+    file = '/home/super--user/PycharmProjects/SRS/db.sqlite3'
+    conn = sqlite3.connect(file)
+    # conn.row_factory = sqlite3.Row  # This is the important part, here we are setting row_factory property of connection object to sqlite3.Row(sqlite3.Row is an implementation of row_factory)
+    user = pd.read_sql_query("SELECT * FROM SRS_user", conn, index_col=None)
+    an=pd.DataFrame([[username,password,mobile]],columns=['user_name','password','mobile_no'])
+    print(an)
+    ann=an.append(user,ignore_index=True)
+    print(ann)
+    ann.to_sql('SRS_user', conn,if_exists='replace', index=False)
+
 
 def upload(username, doc, image_path):
     import sqlite3

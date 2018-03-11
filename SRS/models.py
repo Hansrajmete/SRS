@@ -5,6 +5,10 @@ from django.db import models
 class user(models.Model):
     user_name = models.CharField(primary_key=True, max_length=20)
     password = models.CharField(max_length=20)
+    mobile_no = models.CharField(max_length=20, null=True)
+
+class user_details(models.Model):
+    user_name=models.ForeignKey(user,on_delete=models.CASCADE,related_name='user_det')
     aadhaar = models.CharField(max_length=100,null=True)
     pancard = models.CharField(max_length=100,null=True)
     hsc = models.CharField(max_length=100,null=True)
@@ -13,7 +17,6 @@ class user(models.Model):
     first_name = models.CharField(max_length=20,null=True)
     middle_name = models.CharField(max_length=20,null=True)
     last_name = models.CharField(max_length=20,null=True)
-    mobile_no = models.CharField(max_length=20,null=True)
     gender = models.CharField(max_length=2,null=True)
     address = models.CharField(max_length=20,null=True)
     city = models.CharField(max_length=20,null=True)
